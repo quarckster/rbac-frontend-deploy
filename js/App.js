@@ -3035,7 +3035,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RBAC_API_BASE", function() { return RBAC_API_BASE; });
-var RBAC_API_BASE = "".concat("/r/insights/platform", "/rbac/v1");
+var RBAC_API_BASE = "".concat("/api", "/rbac/v1");
 
 /***/ }),
 
