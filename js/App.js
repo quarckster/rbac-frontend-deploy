@@ -306,12 +306,13 @@ App.propTypes = {
 /*!******************************************!*\
   !*** ./src/Helpers/Group/GroupHelper.js ***!
   \******************************************/
-/*! exports provided: fetchGroups, updateGroup, addGroup, removeGroup */
+/*! exports provided: fetchGroups, fetchGroup, updateGroup, addGroup, removeGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchGroups", function() { return fetchGroups; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchGroup", function() { return fetchGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateGroup", function() { return updateGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addGroup", function() { return addGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeGroup", function() { return removeGroup; });
@@ -375,7 +376,7 @@ function _fetchGroups() {
                 }, _callee, this);
               }));
 
-              return function (_x5) {
+              return function (_x6) {
                 return _ref2.apply(this, arguments);
               };
             }())).then(function (data) {
@@ -394,27 +395,54 @@ function _fetchGroups() {
   return _fetchGroups.apply(this, arguments);
 }
 
-function updateGroup(_x2) {
+function fetchGroup(_x2) {
+  return _fetchGroup.apply(this, arguments);
+}
+
+function _fetchGroup() {
+  _fetchGroup = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(uuid) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return groupApi.getGroup(uuid);
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this);
+  }));
+  return _fetchGroup.apply(this, arguments);
+}
+
+function updateGroup(_x3) {
   return _updateGroup.apply(this, arguments);
 }
 
 function _updateGroup() {
   _updateGroup = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data) {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(data) {
     var members_list, addUsers, removeUsers;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.next = 2;
+            _context4.next = 2;
             return groupApi.updateGroup(data.uuid, data);
 
           case 2:
-            members_list = data.members.map(function (user) {
+            members_list = data.memebers ? data.members.map(function (user) {
               return user.username;
-            }); //update the user members here - adding users and removing users from the group should be a separate action in the UI
-
+            }) : [];
             addUsers = data.user_list.filter(function (item) {
               return !members_list.includes(item.username);
             });
@@ -425,52 +453,52 @@ function _updateGroup() {
             });
 
             if (!(addUsers.length > 0)) {
-              _context3.next = 8;
+              _context4.next = 8;
               break;
             }
 
-            _context3.next = 8;
+            _context4.next = 8;
             return groupApi.addPrincipalToGroup(data.uuid, {
               principals: addUsers
             });
 
           case 8:
             if (!(removeUsers.length > 0)) {
-              _context3.next = 11;
+              _context4.next = 11;
               break;
             }
 
-            _context3.next = 11;
+            _context4.next = 11;
             return groupApi.deletePrincipalFromGroup(data.uuid, removeUsers.join(','));
 
           case 11:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3, this);
+    }, _callee4, this);
   }));
   return _updateGroup.apply(this, arguments);
 }
 
-function addGroup(_x3) {
+function addGroup(_x4) {
   return _addGroup.apply(this, arguments);
 }
 
 function _addGroup() {
   _addGroup = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(data) {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(data) {
     var newGroup;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
-            _context4.next = 2;
+            _context5.next = 2;
             return groupApi.createGroup(data);
 
           case 2:
-            newGroup = _context4.sent;
+            newGroup = _context5.sent;
 
             if (data.user_list && data.user_list.length > 0) {
               groupApi.addPrincipalToGroup(newGroup.uuid, {
@@ -480,35 +508,35 @@ function _addGroup() {
 
           case 4:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
       }
-    }, _callee4, this);
+    }, _callee5, this);
   }));
   return _addGroup.apply(this, arguments);
 }
 
-function removeGroup(_x4) {
+function removeGroup(_x5) {
   return _removeGroup.apply(this, arguments);
 }
 
 function _removeGroup() {
   _removeGroup = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(groupId) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(groupId) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
-            _context5.next = 2;
+            _context6.next = 2;
             return groupApi.deleteGroup(groupId);
 
           case 2:
           case "end":
-            return _context5.stop();
+            return _context6.stop();
         }
       }
-    }, _callee5, this);
+    }, _callee6, this);
   }));
   return _removeGroup.apply(this, arguments);
 }
@@ -1227,7 +1255,7 @@ var Routes = function Routes(props) {
       return lodash_some__WEBPACK_IMPORTED_MODULE_5___default()(paths, function (p) {
         return p === path;
       }) ? null : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: paths.users
+        to: paths.groups
       });
     }
   })));
@@ -1635,22 +1663,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var awesome_debounce_promise__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! awesome-debounce-promise */ "./node_modules/awesome-debounce-promise/dist/index.es.js");
-/* harmony import */ var _red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @red-hat-insights/insights-frontend-components */ "./node_modules/@red-hat-insights/insights-frontend-components/index.js");
-/* harmony import */ var _red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/index.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/index.js");
-/* harmony import */ var _red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @red-hat-insights/insights-frontend-components/components/Pagination */ "./node_modules/@red-hat-insights/insights-frontend-components/components/Pagination.js");
-/* harmony import */ var _red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _add_group_modal__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./add-group-modal */ "./src/SmartComponents/Group/add-group-modal.js");
-/* harmony import */ var _remove_group_modal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./remove-group-modal */ "./src/SmartComponents/Group/remove-group-modal.js");
-/* harmony import */ var _redux_Actions_UserActions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../redux/Actions/UserActions */ "./src/redux/Actions/UserActions.js");
-/* harmony import */ var _group_table_helpers__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./group-table-helpers */ "./src/SmartComponents/Group/group-table-helpers.js");
-/* harmony import */ var _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../redux/Actions/GroupActions */ "./src/redux/Actions/GroupActions.js");
-/* harmony import */ var _Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../Helpers/Shared/helpers */ "./src/Helpers/Shared/helpers.js");
-/* harmony import */ var _PresentationalComponents_Group_GroupsFilterToolbar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../PresentationalComponents/Group/GroupsFilterToolbar */ "./src/PresentationalComponents/Group/GroupsFilterToolbar.js");
-/* harmony import */ var _group_scss__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./group.scss */ "./src/SmartComponents/Group/group.scss");
-/* harmony import */ var _group_scss__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_group_scss__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var awesome_debounce_promise__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! awesome-debounce-promise */ "./node_modules/awesome-debounce-promise/dist/index.es.js");
+/* harmony import */ var _red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @red-hat-insights/insights-frontend-components */ "./node_modules/@red-hat-insights/insights-frontend-components/index.js");
+/* harmony import */ var _red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/index.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/index.js");
+/* harmony import */ var _red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @red-hat-insights/insights-frontend-components/components/Pagination */ "./node_modules/@red-hat-insights/insights-frontend-components/components/Pagination.js");
+/* harmony import */ var _red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _add_group_modal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./add-group-modal */ "./src/SmartComponents/Group/add-group-modal.js");
+/* harmony import */ var _remove_group_modal__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./remove-group-modal */ "./src/SmartComponents/Group/remove-group-modal.js");
+/* harmony import */ var _redux_Actions_UserActions__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../redux/Actions/UserActions */ "./src/redux/Actions/UserActions.js");
+/* harmony import */ var _group_table_helpers__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./group-table-helpers */ "./src/SmartComponents/Group/group-table-helpers.js");
+/* harmony import */ var _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../redux/Actions/GroupActions */ "./src/redux/Actions/GroupActions.js");
+/* harmony import */ var _Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../Helpers/Shared/helpers */ "./src/Helpers/Shared/helpers.js");
+/* harmony import */ var _PresentationalComponents_Group_GroupsFilterToolbar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../PresentationalComponents/Group/GroupsFilterToolbar */ "./src/PresentationalComponents/Group/GroupsFilterToolbar.js");
+/* harmony import */ var _group_scss__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./group.scss */ "./src/SmartComponents/Group/group.scss");
+/* harmony import */ var _group_scss__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_group_scss__WEBPACK_IMPORTED_MODULE_25__);
+
 
 
 
@@ -1679,7 +1710,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var columns = [{
   title: 'Name',
-  cellFormatters: [_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__["expandable"]]
+  cellFormatters: [_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__["expandable"]]
 }, 'Description', 'Members'];
 
 var Groups =
@@ -1710,7 +1741,7 @@ function (_Component) {
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this)), "fetchData", function () {
       _this.props.fetchGroups().then(function () {
         return _this.setState({
-          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_20__["createInitialRows"])(_this.props.groups)
+          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_21__["createInitialRows"])(_this.props.groups)
         });
       });
 
@@ -1723,14 +1754,14 @@ function (_Component) {
         limit: limit
       }).then(function () {
         return _this.setState({
-          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_20__["createInitialRows"])(_this.props.groups)
+          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_21__["createInitialRows"])(_this.props.groups)
         });
       });
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this)), "handleSetPage", function (number, debounce) {
       var options = {
-        offset: Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_22__["getNewPage"])(number, _this.props.pagination.limit),
+        offset: Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_23__["getNewPage"])(number, _this.props.pagination.limit),
         limit: _this.props.pagination.limit
       };
 
@@ -1739,12 +1770,12 @@ function (_Component) {
       };
 
       if (debounce) {
-        return Object(awesome_debounce_promise__WEBPACK_IMPORTED_MODULE_12__["default"])(request, 250)();
+        return Object(awesome_debounce_promise__WEBPACK_IMPORTED_MODULE_13__["default"])(request, 250)();
       }
 
       return request().then(function () {
         return _this.setState({
-          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_20__["createInitialRows"])(_this.props.groups)
+          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_21__["createInitialRows"])(_this.props.groups)
         });
       });
     });
@@ -1810,6 +1841,26 @@ function (_Component) {
       });
     });
 
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this)), "actionResolver", function (groupData, _ref6) {
+      var rowIndex = _ref6.rowIndex;
+
+      if (rowIndex === 1) {
+        return null;
+      }
+
+      return [{
+        title: 'Edit',
+        onClick: function onClick(event, rowId, group) {
+          return _this.props.history.push("/groups/edit/".concat(group.uuid));
+        }
+      }, {
+        title: 'Delete',
+        onClick: function onClick(event, rowId, group) {
+          return _this.props.history.push("/groups/remove/".concat(group.uuid));
+        }
+      }];
+    });
+
     return _this;
   }
 
@@ -1817,26 +1868,35 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.fetchData();
-      Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_22__["scrollToTop"])();
+      Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_23__["scrollToTop"])();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!lodash_isEqual__WEBPACK_IMPORTED_MODULE_12___default()(this.props.groups, prevProps.groups)) {
+        this.setState({
+          rows: Object(_group_table_helpers__WEBPACK_IMPORTED_MODULE_21__["createInitialRows"])(this.props.groups)
+        });
+      }
     }
   }, {
     key: "renderToolbar",
     value: function renderToolbar() {
-      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["Toolbar"], {
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["Toolbar"], {
         className: "searchToolbar"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_PresentationalComponents_Group_GroupsFilterToolbar__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_PresentationalComponents_Group_GroupsFilterToolbar__WEBPACK_IMPORTED_MODULE_24__["default"], {
         onFilterChange: this.onFilterChange,
         filterValue: this.state.filterValue
-      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["ToolbarGroup"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["ToolbarItem"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["ToolbarGroup"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["ToolbarItem"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["Link"], {
         to: "/groups/add-group"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["Button"], {
         variant: "primary",
         "aria-label": "Create Group"
-      }, "Create Group")))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["ToolbarGroup"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__["ToolbarItem"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_16__["Pagination"], {
+      }, "Create Group")))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["ToolbarGroup"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__["ToolbarItem"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_red_hat_insights_insights_frontend_components_components_Pagination__WEBPACK_IMPORTED_MODULE_17__["Pagination"], {
         itemsPerPage: this.props.pagination.limit || 50,
         numberOfItems: this.props.pagination.count || 50,
         onPerPageSelect: this.handleOnPerPageSelect,
-        page: Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_22__["getCurrentPage"])(this.props.pagination.limit, this.props.pagination.offset),
+        page: Object(_Helpers_Shared_helpers__WEBPACK_IMPORTED_MODULE_23__["getCurrentPage"])(this.props.pagination.limit, this.props.pagination.offset),
         onSetPage: this.handleSetPage,
         direction: "down"
       }))));
@@ -1847,37 +1907,38 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_8__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["Route"], {
         exact: true,
         path: "/groups/add-group",
-        component: _add_group_modal__WEBPACK_IMPORTED_MODULE_17__["default"]
+        component: _add_group_modal__WEBPACK_IMPORTED_MODULE_18__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["Route"], {
         exact: true,
         path: "/groups/edit/:id",
-        component: _add_group_modal__WEBPACK_IMPORTED_MODULE_17__["default"]
+        component: _add_group_modal__WEBPACK_IMPORTED_MODULE_18__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["Route"], {
         exact: true,
         path: "/groups/remove/:id",
-        component: _remove_group_modal__WEBPACK_IMPORTED_MODULE_18__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_13__["Section"], {
+        component: _remove_group_modal__WEBPACK_IMPORTED_MODULE_19__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_red_hat_insights_insights_frontend_components__WEBPACK_IMPORTED_MODULE_14__["Section"], {
         type: "content"
-      }, this.renderToolbar(), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__["Table"], {
+      }, this.renderToolbar(), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__["Table"], {
         "aria-label": "Groups table",
         onCollapse: this.onCollapse,
         rows: this.state.rows,
         cells: columns,
-        onSelect: this.selectRow
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__["TableHeader"], null), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__["TableBody"], null))));
+        onSelect: this.selectRow,
+        actionResolver: this.actionResolver
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__["TableHeader"], null), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__["TableBody"], null))));
     }
   }]);
 
   return Groups;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-var mapStateToProps = function mapStateToProps(_ref6) {
-  var _ref6$groupReducer = _ref6.groupReducer,
-      groups = _ref6$groupReducer.groups,
-      isLoading = _ref6$groupReducer.isLoading,
-      _ref6$userReducer = _ref6.userReducer,
-      users = _ref6$userReducer.users,
-      filterValue = _ref6$userReducer.filterValue;
+var mapStateToProps = function mapStateToProps(_ref7) {
+  var _ref7$groupReducer = _ref7.groupReducer,
+      groups = _ref7$groupReducer.groups,
+      isLoading = _ref7$groupReducer.isLoading,
+      _ref7$userReducer = _ref7.userReducer,
+      users = _ref7$userReducer.users,
+      filterValue = _ref7$userReducer.filterValue;
   return {
     groups: groups.data,
     pagination: groups.meta,
@@ -1890,18 +1951,22 @@ var mapStateToProps = function mapStateToProps(_ref6) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchGroups: function fetchGroups(apiProps) {
-      return dispatch(Object(_redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_21__["fetchGroups"])(apiProps));
+      return dispatch(Object(_redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_22__["fetchGroups"])(apiProps));
     },
     fetchUsersByGroupId: function fetchUsersByGroupId(apiProps) {
-      return dispatch(Object(_redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_21__["fetchUsersByGroupId"])(apiProps));
+      return dispatch(Object(_redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_22__["fetchUsersByGroupId"])(apiProps));
     },
     fetchUsers: function fetchUsers(apiProps) {
-      return dispatch(Object(_redux_Actions_UserActions__WEBPACK_IMPORTED_MODULE_19__["fetchUsers"])(apiProps));
+      return dispatch(Object(_redux_Actions_UserActions__WEBPACK_IMPORTED_MODULE_20__["fetchUsers"])(apiProps));
     }
   };
 };
 
 Groups.propTypes = {
+  history: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.shape({
+    goBack: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.func.isRequired,
+    push: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.func.isRequired
+  }).isRequired,
   filteredItems: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.array,
   groups: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.array,
   platforms: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.array,
@@ -1967,9 +2032,16 @@ var AddGroupModal = function AddGroupModal(_ref) {
       addGroup = _ref.addGroup,
       addNotification = _ref.addNotification,
       fetchGroups = _ref.fetchGroups,
+      fetchGroup = _ref.fetchGroup,
       initialValues = _ref.initialValues,
       users = _ref.users,
+      groupId = _ref.groupId,
       updateGroup = _ref.updateGroup;
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (groupId) {
+      fetchGroup(groupId);
+    }
+  }, []);
 
   var onSubmit = function onSubmit(data) {
     var user_data = _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, data, {
@@ -2064,6 +2136,9 @@ var AddGroupModal = function AddGroupModal(_ref) {
   }))));
 };
 
+AddGroupModal.defaultProps = {
+  users: []
+};
 AddGroupModal.propTypes = {
   history: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.shape({
     goBack: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired
@@ -2071,19 +2146,19 @@ AddGroupModal.propTypes = {
   addGroup: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired,
   addNotification: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired,
   fetchGroups: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired,
+  fetchGroup: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired,
   initialValues: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.object,
+  groupId: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
   users: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.array,
   updateGroup: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired
 };
 
 var mapStateToProps = function mapStateToProps(state, _ref2) {
   var id = _ref2.match.params.id;
-  var groups = state.groupReducer.groups;
+  var selectedGroup = state.groupReducer.selectedGroup;
   return {
     users: state.userReducer.users,
-    initialValues: id && groups.find(function (item) {
-      return item.uuid === id;
-    }),
+    initialValues: id && selectedGroup,
     groupId: id
   };
 };
@@ -2093,6 +2168,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     addNotification: _red_hat_insights_insights_frontend_components_components_Notifications__WEBPACK_IMPORTED_MODULE_9__["addNotification"],
     addGroup: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_10__["addGroup"],
     updateGroup: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_10__["updateGroup"],
+    fetchGroup: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_10__["fetchGroup"],
     fetchGroups: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_10__["fetchGroups"]
   }, dispatch);
 };
@@ -2244,10 +2320,19 @@ var RemoveGroupModal = function RemoveGroupModal(_ref) {
       goBack = _ref$history.goBack,
       push = _ref$history.push,
       removeGroup = _ref.removeGroup,
-      addNotification = _ref.addNotification,
+      fetchGroup = _ref.fetchGroup,
       fetchGroups = _ref.fetchGroups,
       groupId = _ref.groupId,
-      groupName = _ref.groupName;
+      group = _ref.group;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (groupId) {
+      fetchGroup(groupId);
+    }
+  }, []);
+
+  if (!group) {
+    return null;
+  }
 
   var onSubmit = function onSubmit() {
     return removeGroup(groupId).then(function () {
@@ -2256,15 +2341,12 @@ var RemoveGroupModal = function RemoveGroupModal(_ref) {
   };
 
   var onCancel = function onCancel() {
-    return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["pipe"])(addNotification({
-      variant: 'warning',
-      title: 'Removing group',
-      description: 'Removing group was cancelled by the user.'
-    }), goBack());
+    return goBack();
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Modal"], {
     isOpen: true,
+    isSmall: true,
     title: '',
     onClose: onCancel,
     actions: [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Button"], {
@@ -2278,11 +2360,9 @@ var RemoveGroupModal = function RemoveGroupModal(_ref) {
       type: "button",
       onClick: onSubmit
     }, "Confirm")]
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Bullseye"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "center_message"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Title"], {
-    size: 'xl'
-  }, "Removing Group:  ", groupName))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Bullseye"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["TextContent"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["Text"], {
+    component: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__["TextVariants"].h1
+  }, "Removing Group:  ", group.name))));
 };
 
 RemoveGroupModal.propTypes = {
@@ -2293,28 +2373,27 @@ RemoveGroupModal.propTypes = {
   removeGroup: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
   addNotification: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
   fetchGroups: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+  fetchGroup: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
   groupId: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-  groupName: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+  group: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
-var groupDetailsFromState = function groupDetailsFromState(state, id) {
-  return state.groupReducer.groups.find(function (group) {
-    return group.uuid === id;
-  });
-};
-
-var mapStateToProps = function mapStateToProps(state, _ref2) {
-  var id = _ref2.match.params.id;
-  var group = groupDetailsFromState(state, id);
+var mapStateToProps = function mapStateToProps(_ref2, _ref3) {
+  var _ref2$groupReducer = _ref2.groupReducer,
+      selectedGroup = _ref2$groupReducer.selectedGroup,
+      isLoading = _ref2$groupReducer.isLoading;
+  var id = _ref3.match.params.id;
   return {
-    groupId: group.uuid,
-    groupName: group.name
+    groupId: id,
+    group: selectedGroup,
+    isLoading: isLoading
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])({
     addNotification: _red_hat_insights_insights_frontend_components_components_Notifications__WEBPACK_IMPORTED_MODULE_6__["addNotification"],
+    fetchGroup: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_7__["fetchGroup"],
     fetchGroups: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_7__["fetchGroups"],
     removeGroup: _redux_Actions_GroupActions__WEBPACK_IMPORTED_MODULE_7__["removeGroup"]
   }, dispatch);
@@ -3240,7 +3319,7 @@ var REMOVE_GROUP = 'REMOVE_GROUP';
 /*!*******************************************!*\
   !*** ./src/redux/Actions/GroupActions.js ***!
   \*******************************************/
-/*! exports provided: doFetchGroups, fetchGroups, fetchUsersByGroupId, addGroup, addToGroup, updateGroup, removeGroup */
+/*! exports provided: doFetchGroups, fetchGroups, fetchUsersByGroupId, fetchGroup, addGroup, addToGroup, updateGroup, removeGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3248,6 +3327,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "doFetchGroups", function() { return doFetchGroups; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchGroups", function() { return fetchGroups; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUsersByGroupId", function() { return fetchUsersByGroupId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchGroup", function() { return fetchGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addGroup", function() { return addGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToGroup", function() { return addToGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateGroup", function() { return updateGroup; });
@@ -3276,9 +3356,13 @@ var fetchGroups = function fetchGroups(options) {
 var fetchUsersByGroupId = function fetchUsersByGroupId(apiProps) {
   return {
     type: _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_USERS_BY_GROUP_ID"],
-    payload: new Promise(function (resolve) {
-      resolve(_Helpers_Group_GroupHelper__WEBPACK_IMPORTED_MODULE_1__["fetchUsersByGroupId"](apiProps));
-    })
+    payload: _Helpers_Group_GroupHelper__WEBPACK_IMPORTED_MODULE_1__["fetchUsersByGroupId"](apiProps)
+  };
+};
+var fetchGroup = function fetchGroup(apiProps) {
+  return {
+    type: _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_GROUP"],
+    payload: _Helpers_Group_GroupHelper__WEBPACK_IMPORTED_MODULE_1__["fetchGroup"](apiProps)
   };
 };
 var addGroup = function addGroup(groupData) {
