@@ -16,11 +16,6 @@ button:focus {
 .bg-white {
   background-color: white; }
 
-.center_message {
-  padding-top: 35px;
-  padding-left: 10px;
-  padding-right: 10px; }
-
 :root {
   --ins-color--orange: #ec7a08; }
 
@@ -61,4 +56,9 @@ button:focus {
 
 .bg-white {
   background-color: white; }
+
+.center_message {
+  padding-top: 35px;
+  padding-left: 10px;
+  padding-right: 10px; }
 
