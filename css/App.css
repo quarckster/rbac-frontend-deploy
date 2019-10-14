@@ -15,6 +15,9 @@
 .table-fix .pf-c-table__toggle {
   padding-top: 0; }
 
+.select-style {
+  padding-bottom: 200px; }
+
 .toolbar-filter-input-group {
   position: relative;
   width: 300px;
