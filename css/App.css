@@ -56,6 +56,9 @@
 .danger-color:not(:disabled) {
   color: var(--pf-global--danger-color--100) !important; }
 
+.pf-l-toolbar.rbac-table__toolbar .pf-l-toolbar__item {
+  min-width: 5rem; }
+
 .top-toolbar {
   background-color: #FFFFFF; }
   .top-toolbar .pf-c-breadcrumb__item .active {
