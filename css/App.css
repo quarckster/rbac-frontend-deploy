@@ -73,3 +73,6 @@
   .top-toolbar .top-toolbar-title {
     min-width: 200px; }
 
+.ins-c-role__permissions .pf-c-content {
+  padding-bottom: var(--pf-global--spacer--lg); }
+
