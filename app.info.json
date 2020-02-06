@@ -1,11 +1,11 @@
 {
   "app_name": "rbac",
-  "src_hash": "db9ea0504f19d3918512610f0b97ca48a9109110",
+  "src_hash": "a6b06086a939566b74445410ace1dacc41333a7d",
   "src_tag": "",
   "src_branch": "qa-beta",
   "travis": {
     "event_type": "push",
-    "build_number": "767",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-rbac-ui/builds/646739703"
+    "build_number": "778",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-rbac-ui/builds/646871842"
   }
 }
