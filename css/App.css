@@ -73,6 +73,10 @@
   .top-toolbar .top-toolbar-title {
     min-width: 200px; }
 
+.ins-c-rbac__users-toolbar-description {
+  padding: var(--pf-global--spacer--sm);
+  padding-left: 0px; }
+
 .ins-c-role__permissions .pf-c-content {
   padding-bottom: var(--pf-global--spacer--lg); }
 
