@@ -71,24 +71,19 @@
 .pf-l-toolbar.rbac-table__toolbar .pf-l-toolbar__item {
   min-width: 5rem; }
 
-.top-toolbar {
-  background-color: #FFFFFF; }
-  .top-toolbar .pf-c-breadcrumb__item .active {
-    color: var(--pf-c-breadcrumb__item--Color);
-    text-decoration: none;
-    pointer-events: none; }
-  .top-toolbar h2 {
-    margin-bottom: 0 !important; }
-  .top-toolbar .top-toolbar-title {
-    min-width: 200px; }
+.ins-rbac-page-header__title {
+  display: block; }
 
-.ins-c-rbac__users-toolbar-description {
-  padding: var(--pf-global--spacer--sm);
-  padding-left: 0px; }
+.ins-rbac-page-header__title + .ins-rbac-page-header__description {
+  margin-top: 8px; }
 
 .ins-c-role__permissions .pf-c-content {
   padding-bottom: var(--pf-global--spacer--lg); }
 
 .ins-c-rbac__default-group-info-icon {
   color: var(--pf-global--info-color--100); }
+
+.pf-c-tabs.ins-rbac-page-header__tabs {
+  padding: 0 var(--pf-c-page__main-section--PaddingRight) 0 var(--pf-c-page__main-section--PaddingLeft);
+  background: white; }
 
