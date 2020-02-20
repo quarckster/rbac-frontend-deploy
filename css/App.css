@@ -68,6 +68,11 @@
 .ins-c-rbac__summary .pf-l-grid .pf-l-grid__item {
   margin-bottom: var(--pf-global--gutter--md); }
 
+.ins-c-rbac-denied-state .pf-c-title {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto; }
+
 .pf-c-table tbody tr.ins-c-rbac__group-default .pf-c-table__check:first-of-type input {
   display: none; }
 
