@@ -17,8 +17,12 @@ node {
         PREFIX = ""
       } else if (BRANCH == "prod-beta") {
         PREFIX = "beta/"
+      } else if (BRANCH == "qa-stable") {
+        PREFIX = "pentest/"
+      } else if (BRANCH == "qa-beta") {
+        PREFIX = "pentest/beta/"
       } else {
-        error "Bug: invalid branch name, we only support prod-beta/prod-stable and we got ${BRANCH}"
+        error "Bug: invalid branch name, we only support (prod/qa)-(beta/stable) and we got ${BRANCH}"
       }
 
       // Write build info into app.info.json
@@ -42,7 +46,13 @@ node {
            ssh-add \"$privateKeyFile\"
            cp $AKAMAI_HOST_KEY ~/.ssh/known_hosts
            chmod 600 ~/.ssh/known_hosts
-           rsync -arv -e \"ssh -2\" * sshacs@cloud-unprotected.upload.akamai.com:${AKAMAI_APP_PATH}
+           n=0
+           until [ \$n -ge 10 ]
+           do
+              rsync -arv -e \"ssh -2\" * sshacs@cloud-unprotected.upload.akamai.com:${AKAMAI_APP_PATH} && break
+              n=\$[\$n+1]
+              sleep 10
+           done
          """
       }
       
