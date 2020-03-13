@@ -71,6 +71,19 @@
 .ins-c-rbac__summary .pf-l-grid .pf-l-grid__item {
   margin-bottom: var(--pf-global--gutter--md); }
 
+.ins-c-wizard__cancel-warning-header {
+  display: flex;
+  align-items: center; }
+  .ins-c-wizard__cancel-warning-header--icon {
+    fill: var(--pf-global--warning-color--100);
+    margin-right: var(--pf-global--spacer--md); }
+
+.pf-c-modal-box__body span {
+  display: block; }
+
+.ins-m-wizard__hidden {
+  display: none; }
+
 .pf-c-tabs.ins-rbac-page-header__tabs {
   padding: 0 var(--pf-c-page__main-section--PaddingRight) 0 var(--pf-c-page__main-section--PaddingLeft);
   background: white; }

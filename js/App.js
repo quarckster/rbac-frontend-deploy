@@ -3202,6 +3202,88 @@ FormRenderer.defaultProps = {
 
 /***/ }),
 
+/***/ "./src/smart-components/common/hideWizard.scss":
+/*!*****************************************************!*\
+  !*** ./src/smart-components/common/hideWizard.scss ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/smart-components/common/warningModal.js":
+/*!*****************************************************!*\
+  !*** ./src/smart-components/common/warningModal.js ***!
+  \*****************************************************/
+/*! exports provided: WarningModal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WarningModal", function() { return WarningModal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/index.js");
+/* harmony import */ var _patternfly_react_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons */ "./node_modules/@patternfly/react-icons/dist/esm/index.js");
+/* harmony import */ var _warningModal_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./warningModal.scss */ "./src/smart-components/common/warningModal.scss");
+/* harmony import */ var _warningModal_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_warningModal_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+var WarningModal = function WarningModal(_ref) {
+  var type = _ref.type,
+      isOpen = _ref.isOpen,
+      onModalCancel = _ref.onModalCancel,
+      onConfirmCancel = _ref.onConfirmCancel;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
+    title: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "ins-c-wizard__cancel-warning-header"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_icons__WEBPACK_IMPORTED_MODULE_3__["ExclamationTriangleIcon"], {
+      size: "md",
+      className: "ins-c-wizard__cancel-warning-header--icon"
+    }), "Exit ", type, " creation"),
+    isSmall: true,
+    className: "ins-c-wizard__cancel-warning",
+    isOpen: isOpen,
+    onClose: onModalCancel,
+    actions: [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      key: "confirm",
+      variant: "danger",
+      onClick: onConfirmCancel
+    }, "Yes, I want to exit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      key: "cancel",
+      variant: "link",
+      onClick: onModalCancel
+    }, "No, I want to continue")],
+    isFooterLeftAligned: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " Are you sure you want to stop creating a ", type, " in user access? "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " All inputs will be discarded."));
+};
+WarningModal.propTypes = {
+  type: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  isOpen: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  onModalCancel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+  onConfirmCancel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
+};
+
+/***/ }),
+
+/***/ "./src/smart-components/common/warningModal.scss":
+/*!*******************************************************!*\
+  !*** ./src/smart-components/common/warningModal.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/smart-components/group/add-group/add-group-wizard.js":
 /*!******************************************************************!*\
   !*** ./src/smart-components/group/add-group/add-group-wizard.js ***!
@@ -3236,6 +3318,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _group_information__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./group-information */ "./src/smart-components/group/add-group/group-information.js");
 /* harmony import */ var _set_users__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./set-users */ "./src/smart-components/group/add-group/set-users.js");
 /* harmony import */ var _set_roles__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./set-roles */ "./src/smart-components/group/add-group/set-roles.js");
+/* harmony import */ var _common_warningModal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../common/warningModal */ "./src/smart-components/common/warningModal.js");
+/* harmony import */ var _common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../common/hideWizard.scss */ "./src/smart-components/common/hideWizard.scss");
+/* harmony import */ var _common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_19__);
+
+
 
 
 
@@ -3368,16 +3455,31 @@ var AddGroupWizard = function AddGroupWizard(_ref) {
     history.push('/groups');
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__["Wizard"], {
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(false),
+      _useState10 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default()(_useState9, 2),
+      cancelWarningVisible = _useState10[0],
+      setcancelWarningVisible = _useState10[1];
+
+  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__["Wizard"], {
+    className: cancelWarningVisible && 'ins-m-wizard__hidden',
     isLarge: true,
     isCompactNav: true,
     title: "Create and configure a group",
     description: "To give users access permissions, create a group and assign roles to it.",
     isOpen: true,
-    onClose: onCancel,
+    onClose: function onClose() {
+      return setcancelWarningVisible(true);
+    },
     onSave: onSubmit,
     steps: steps
-  });
+  }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_common_warningModal__WEBPACK_IMPORTED_MODULE_18__["WarningModal"], {
+    type: "group",
+    isOpen: cancelWarningVisible,
+    onModalCancel: function onModalCancel() {
+      return setcancelWarningVisible(false);
+    },
+    onConfirmCancel: onCancel
+  }));
 };
 
 AddGroupWizard.defaultProps = {
@@ -6170,6 +6272,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resource_definitions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./resource-definitions */ "./src/smart-components/role/add-role/resource-definitions.js");
 /* harmony import */ var _role_information__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./role-information */ "./src/smart-components/role/add-role/role-information.js");
 /* harmony import */ var _permission_information__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./permission-information */ "./src/smart-components/role/add-role/permission-information.js");
+/* harmony import */ var _common_warningModal__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../common/warningModal */ "./src/smart-components/common/warningModal.js");
+/* harmony import */ var _common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../common/hideWizard.scss */ "./src/smart-components/common/hideWizard.scss");
+/* harmony import */ var _common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_common_hideWizard_scss__WEBPACK_IMPORTED_MODULE_17__);
+
+
 
 
 
@@ -6318,15 +6425,30 @@ var AddRoleWizard = function AddRoleWizard(_ref) {
     push('/roles');
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__["Wizard"], {
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(false),
+      _useState10 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default()(_useState9, 2),
+      cancelWarningVisible = _useState10[0],
+      setcancelWarningVisible = _useState10[1];
+
+  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__["Wizard"], {
+    className: cancelWarningVisible && 'ins-m-wizard__hidden',
     isLarge: true,
     title: "Add role",
     isOpen: true,
-    onClose: onCancel,
+    onClose: function onClose() {
+      return setcancelWarningVisible(true);
+    },
     onNext: onNext,
     onSave: onSubmit,
     steps: steps
-  });
+  }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_common_warningModal__WEBPACK_IMPORTED_MODULE_16__["WarningModal"], {
+    type: "role",
+    isOpen: cancelWarningVisible,
+    onModalCancel: function onModalCancel() {
+      return setcancelWarningVisible(false);
+    },
+    onConfirmCancel: onCancel
+  }));
 };
 
 AddRoleWizard.defaultProps = {
