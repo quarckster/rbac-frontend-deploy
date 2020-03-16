@@ -1,0 +1,11 @@
+.pf-l-toolbar.rbac-table__toolbar .pf-l-toolbar__item {
+  min-width: 5rem; }
+
+.ins-rbac-page-header__title {
+  display: block; }
+
+.ins-rbac-page-header__title + .ins-rbac-page-header__description {
+  margin-top: 8px; }
+
+
+/*# sourceMappingURL=0.css.map*/
