@@ -1,12 +1,12 @@
 {
   "app_name": "rbac",
-  "src_hash": "29f2f986f365c5d97a237db79d3e00412a405364",
+  "src_hash": "cbd41f38e816f8036e4844bb1c139aa6786a2e91",
   "src_tag": "",
   "src_branch": "master",
   "patternfly_dependencies": ["UNMET PEER DEPENDENCY @patternfly/react-core@4.47.0","UNMET PEER DEPENDENCY @patternfly/react-icons@4.7.4","@patternfly/react-table@4.19.5","@patternfly/react-tokens@4.9.16"],
   "travis": {
     "event_type": "push",
-    "build_number": "3339",
-    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-rbac-ui/builds/198400198"
+    "build_number": "3346",
+    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-rbac-ui/builds/198401093"
   }
 }
