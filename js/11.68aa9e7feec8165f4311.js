@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{947:function(n,i,s){"use strict";s.r(i);var e=s(0),t=s.n(e);i.default=function(){return t.a.createElement("div",{id:"insights-mock"},"This is just a mock insights bundle module")}}}]);
+//# sourceMappingURL=11.68aa9e7feec8165f4311.js.map
