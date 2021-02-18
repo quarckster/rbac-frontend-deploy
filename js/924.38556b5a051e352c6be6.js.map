@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://insights-rbac-frontend/./src/smart-components/accessRequest/accessRequest.js"],"names":[],"mappings":"sLAIA,QAFsB,kBAAM","file":"js/924.38556b5a051e352c6be6.js","sourcesContent":["import React from 'react';\n\nconst AccessRequest = () => <div>Nothing here yet</div>;\n\nexport default AccessRequest;\n"],"sourceRoot":""}
