@@ -1,2 +1,0 @@
-(self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[374],{41374:(e,n,t)=>{"use strict";t.r(n),t.d(n,{default:()=>u});var a=t(80150),r=t.n(a),c=t(47194),o=t(70983),s=t(54479),l=t(27625),i=t(35240);const u=function(){return r().createElement(o.Provider,{store:s.Z},r().createElement(c.BrowserRouter,{basename:(0,i.eb)(location.pathname,2).includes("rbac")?(0,i.eb)(location.pathname,2):(0,i.eb)(location.pathname,1)},r().createElement(l.Z,null)))}}}]);
-//# sourceMappingURL=374.e1f76ba3121f6a8fed08.js.map
