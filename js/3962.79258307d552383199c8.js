@@ -1,1 +1,0 @@
-(self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[3962],{3962:(e,s,n)=>{"use strict";n.r(s),n.d(s,{default:()=>t.default});var t=n(3726)}}]);
