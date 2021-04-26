@@ -1,2 +1,0 @@
-(self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[51],{47051:(n,s,e)=>{"use strict";e.r(s),e.d(s,{default:()=>c});var t=e(80150),i=e.n(t);const c=function(){return i().createElement("div",{id:"insights-mock"},"This is just a mock insights bundle module")}}}]);
-//# sourceMappingURL=51.23fef5c85d9a87214dfe.js.map
