@@ -1,2 +1,2 @@
 (self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[8446],{18446:(n,e,r)=>{var s=r(90939);n.exports=function(n,e){return s(n,e)}}}]);
-//# sourceMappingURL=../sourcemaps/8446.fc052dca336dd792eb6b.js.map
+//# sourceMappingURL=../sourcemaps/8446.51994b112f2835268759.js.map
