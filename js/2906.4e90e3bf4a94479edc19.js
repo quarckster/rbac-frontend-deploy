@@ -1,2 +1,2 @@
 (self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[2906],{22122:(n,r,t)=>{"use strict";function e(){return(e=Object.assign||function(n){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var e in t)Object.prototype.hasOwnProperty.call(t,e)&&(n[e]=t[e])}return n}).apply(this,arguments)}t.d(r,{Z:()=>e})},19756:(n,r,t)=>{"use strict";function e(n,r){if(null==n)return{};var t,e,s={},i=Object.keys(n);for(e=0;e<i.length;e++)t=i[e],r.indexOf(t)>=0||(s[t]=n[t]);return s}t.d(r,{Z:()=>e})}}]);
-//# sourceMappingURL=../sourcemaps/2906.51994b112f2835268759.js.map
+//# sourceMappingURL=../sourcemaps/2906.0e63fdaa1247e81bff10.js.map
