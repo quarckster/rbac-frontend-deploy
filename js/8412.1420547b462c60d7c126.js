@@ -1,2 +1,2 @@
 (self.webpackChunkinsights_rbac_frontend=self.webpackChunkinsights_rbac_frontend||[]).push([[8412],{28412:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>u});var r=n(80150),a=n.n(r),c=n(334),o=n(12167),s=n(43146),i=n(79815),l=n(35240);const u=function(){return a().createElement(s.g.Provider,{value:{getRegistry:function(){return s.Z}}},a().createElement(o.Provider,{store:s.Z.getStore()},a().createElement(c.BrowserRouter,{basename:(0,l.eb)(location.pathname,2).includes("rbac")?(0,l.eb)(location.pathname,2):(0,l.eb)(location.pathname,1)},a().createElement(i.Z,null))))}}}]);
-//# sourceMappingURL=../sourcemaps/8412.53b0704a0518a0b71fdd.js.map
+//# sourceMappingURL=../sourcemaps/8412.227a77502ed312d759f3.js.map
